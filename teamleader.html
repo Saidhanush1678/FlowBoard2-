@@ -1,0 +1,44 @@
+<h1>Team Leader Dashboard</h1>
+
+<h2>Assigned Projects</h2>
+
+<ul>
+    {% for project in projects %}
+        <li>{{ project.name }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Create Project Structure</h2>
+
+<form>
+
+    <input type="text"
+           placeholder="Folder Name">
+
+    <button>
+        Create Folder
+    </button>
+
+</form>
+
+<h2>Assign Tasks</h2>
+
+<table>
+
+<tr>
+    <th>Task</th>
+    <th>Member</th>
+    <th>Status</th>
+</tr>
+
+{% for task in tasks %}
+
+<tr>
+    <td>{{ task.task }}</td>
+    <td>{{ task.member }}</td>
+    <td>{{ task.status }}</td>
+</tr>
+
+{% endfor %}
+
+</table>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Leader Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+
+            background:#0f172a;
+
+            color:white;
+
+            overflow-x:hidden;
+        }
+
+        /* Layout */
+
+        .dashboard{
+
+            display:flex;
+
+            min-height:100vh;
+        }
+
+        /* Sidebar */
+
+        .sidebar{
+
+            width:270px;
+
+            background:rgba(15,23,42,0.95);
+
+            backdrop-filter:blur(12px);
+
+            border-right:1px solid rgba(255,255,255,0.08);
+
+            padding:30px 20px;
+
+            position:fixed;
+
+            height:100vh;
+        }
+
+        .sidebar h2{
+
+            text-align:center;
+
+            color:#60a5fa;
+
+            font-size:30px;
+
+            margin-bottom:40px;
+
+            font-weight:700;
+        }
+
+        .sidebar ul{
+
+            list-style:none;
+        }
+
+        .sidebar ul li{
+
+            padding:15px;
+
+            margin-bottom:15px;
+
+            border-radius:14px;
+
+            background:rgba(255,255,255,0.06);
+
+            cursor:pointer;
+
+            transition:0.4s;
+
+            font-weight:500;
+        }
+
+        .sidebar ul li:hover{
+
+            background:linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            transform:translateX(6px);
+
+            box-shadow:0 6px 18px rgba(37,99,235,0.4);
+        }
+
+        /* Content */
+
+        .content{
+
+            margin-left:270px;
+
+            width:100%;
+
+            padding:35px;
+        }
+
+        .content h1{
+
+            font-size:38px;
+
+            margin-bottom:25px;
+
+            font-weight:700;
+        }
+
+        .content h2{
+
+            margin-top:30px;
+
+            margin-bottom:15px;
+
+            color:#93c5fd;
+
+            font-size:24px;
+        }
+
+        /* Tables */
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+
+            background:rgba(255,255,255,0.05);
+
+            backdrop-filter:blur(12px);
+
+            border-radius:18px;
+
+            overflow:hidden;
+
+            box-shadow:0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        table th{
+
+            background:#1e293b;
+
+            color:#93c5fd;
+
+            padding:18px;
+
+            text-align:left;
+
+            font-size:16px;
+        }
+
+        table td{
+
+            padding:18px;
+
+            border-bottom:1px solid rgba(255,255,255,0.06);
+
+            color:#e2e8f0;
+        }
+
+        table tr:hover{
+
+            background:rgba(255,255,255,0.04);
+        }
+
+        /* Form */
+
+        form{
+
+            display:flex;
+
+            gap:15px;
+
+            flex-wrap:wrap;
+
+            margin-top:10px;
+        }
+
+        input{
+
+            padding:14px;
+
+            border:none;
+
+            outline:none;
+
+            border-radius:12px;
+
+            background:rgba(255,255,255,0.1);
+
+            color:white;
+
+            border:1px solid rgba(255,255,255,0.12);
+
+            flex:1;
+
+            min-width:200px;
+        }
+
+        input::placeholder{
+
+            color:#cbd5e1;
+        }
+
+        input:focus{
+
+            border:1px solid #60a5fa;
+        }
+
+        button{
+
+            padding:14px 20px;
+
+            border:none;
+
+            border-radius:12px;
+
+            background:linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            color:white;
+
+            font-weight:600;
+
+            cursor:pointer;
+
+            transition:0.4s;
+        }
+
+        button:hover{
+
+            transform:translateY(-3px);
+
+            box-shadow:0 8px 20px rgba(37,99,235,0.45);
+        }
+
+        a{
+
+            display:inline-block;
+
+            margin-top:20px;
+
+            color:#60a5fa;
+
+            text-decoration:none;
+
+            font-weight:600;
+        }
+
+        a:hover{
+
+            text-decoration:underline;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>Team Leader</h2>
+
+        <ul>
+
+            <li>Assigned Projects</li>
+
+            <li>Create Structure</li>
+
+            <li>Assign Tasks</li>
+
+            <li>Upload Files</li>
+
+        </ul>
+
+    </div>
+
+    <!-- Content -->
+
+    <div class="content">
+
+        <h1>{{ leader }} Dashboard</h1>
+
+        <h2>Assigned Projects</h2>
+
+        <table>
+
+            <tr>
+                <th>Project Name</th>
+                <th>Status</th>
+            </tr>
+
+            {% for project in projects %}
+
+            <tr>
+
+                <td>{{ project.name }}</td>
+
+                <td>{{ project.status }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <br>
+
+        <h2>Assign Tasks</h2>
+
+        <form>
+
+            <input type="text"
+                   placeholder="Task Name"
+                   required>
+
+            <input type="text"
+                   placeholder="Assign Member"
+                   required>
+
+            <button type="submit">
+                Assign Task
+            </button>
+
+        </form>
+
+        <br>
+
+        <h2>Task Details</h2>
+
+        <table>
+
+            <tr>
+                <th>Project</th>
+                <th>Task</th>
+                <th>Member</th>
+                <th>Status</th>
+            </tr>
+
+            {% for task in tasks %}
+
+            <tr>
+
+                <td>{{ task.project }}</td>
+
+                <td>{{ task.task }}</td>
+
+                <td>{{ task.member }}</td>
+
+                <td>{{ task.status }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <a href="/upload_code">
+            Upload Project Files
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

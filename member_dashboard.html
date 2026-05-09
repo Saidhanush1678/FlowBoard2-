@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Member Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+
+            background:#0f172a;
+
+            color:white;
+
+            padding:30px;
+        }
+
+        /* Header */
+
+        h1{
+
+            font-size:38px;
+
+            margin-bottom:20px;
+
+            font-weight:700;
+        }
+
+        h2{
+
+            margin-top:30px;
+
+            margin-bottom:15px;
+
+            color:#93c5fd;
+
+            font-size:24px;
+        }
+
+        /* Table */
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+
+            background:rgba(255,255,255,0.05);
+
+            backdrop-filter:blur(12px);
+
+            border-radius:18px;
+
+            overflow:hidden;
+
+            box-shadow:0 8px 20px rgba(0,0,0,0.35);
+        }
+
+        th{
+
+            background:#1e293b;
+
+            color:#93c5fd;
+
+            padding:18px;
+
+            text-align:left;
+
+            font-size:16px;
+        }
+
+        td{
+
+            padding:18px;
+
+            border-bottom:1px solid rgba(255,255,255,0.06);
+
+            color:#e2e8f0;
+        }
+
+        tr:hover{
+
+            background:rgba(255,255,255,0.04);
+        }
+
+        /* Upload Form */
+
+        form{
+
+            margin-top:15px;
+
+            display:flex;
+
+            gap:20px;
+
+            flex-wrap:wrap;
+
+            align-items:center;
+        }
+
+        input[type="file"]{
+
+            padding:14px;
+
+            border-radius:12px;
+
+            background:rgba(255,255,255,0.08);
+
+            color:white;
+
+            border:1px solid rgba(255,255,255,0.15);
+
+            cursor:pointer;
+        }
+
+        input[type="file"]::file-selector-button{
+
+            background:linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            border:none;
+
+            padding:10px 18px;
+
+            border-radius:10px;
+
+            color:white;
+
+            cursor:pointer;
+
+            margin-right:12px;
+
+            transition:0.3s;
+        }
+
+        input[type="file"]::file-selector-button:hover{
+
+            transform:scale(1.05);
+        }
+
+        button{
+
+            padding:14px 22px;
+
+            border:none;
+
+            border-radius:12px;
+
+            background:linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            color:white;
+
+            font-weight:600;
+
+            cursor:pointer;
+
+            transition:0.4s;
+        }
+
+        button:hover{
+
+            transform:translateY(-4px);
+
+            box-shadow:0 8px 20px rgba(37,99,235,0.4);
+        }
+
+        /* Glow effect */
+
+        .glow{
+
+            position:fixed;
+
+            width:300px;
+
+            height:300px;
+
+            background:rgba(99,102,241,0.15);
+
+            filter:blur(80px);
+
+            border-radius:50%;
+
+            top:-80px;
+
+            right:-80px;
+
+            z-index:-1;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="glow"></div>
+
+    <h1>Member Dashboard</h1>
+
+    <h2>Assigned Tasks</h2>
+
+    <table>
+
+        <tr>
+            <th>Project</th>
+            <th>Task</th>
+            <th>Status</th>
+        </tr>
+
+        {% for task in tasks %}
+
+        <tr>
+            <td>{{ task.project }}</td>
+            <td>{{ task.task }}</td>
+            <td>{{ task.status }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <h2>Upload Completed Code</h2>
+
+    <form action="/upload"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <input type="file" name="file">
+
+        <button type="submit">
+            Upload Code
+        </button>
+
+    </form>
+
+</body>
+
+</html>

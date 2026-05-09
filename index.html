@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        FlowBoard – Intelligent Project Dashboard for Team Collaboration
+    </title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+
+            height:100vh;
+
+            background-image:
+            linear-gradient(rgba(15,23,42,0.8),
+            rgba(15,23,42,0.9)),
+            url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070');
+
+            background-size:cover;
+            background-position:center;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            overflow:hidden;
+        }
+
+        .glass-card{
+
+            width:500px;
+
+            backdrop-filter:blur(14px);
+
+            background:rgba(255,255,255,0.08);
+
+            border:1px solid rgba(255,255,255,0.2);
+
+            border-radius:25px;
+
+            padding:50px;
+
+            box-shadow:0 8px 32px rgba(0,0,0,0.4);
+
+            animation:fadeIn 1.5s ease;
+        }
+
+        .title{
+
+            color:white;
+
+            font-size:38px;
+
+            font-weight:700;
+
+            text-align:center;
+
+            line-height:1.4;
+
+            margin-bottom:15px;
+        }
+
+        .subtitle{
+
+            text-align:center;
+
+            color:#dbeafe;
+
+            margin-bottom:40px;
+
+            font-size:15px;
+        }
+
+        .login-buttons{
+
+            display:flex;
+
+            flex-direction:column;
+
+            gap:20px;
+        }
+
+        .login-buttons a{
+
+            text-decoration:none;
+
+            background:linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            color:white;
+
+            padding:16px;
+
+            text-align:center;
+
+            border-radius:14px;
+
+            font-size:17px;
+
+            font-weight:600;
+
+            transition:0.4s;
+        }
+
+        .login-buttons a:hover{
+
+            transform:translateY(-4px) scale(1.03);
+
+            box-shadow:0 8px 20px rgba(59,130,246,0.4);
+        }
+
+        .circle{
+
+            position:absolute;
+
+            border-radius:50%;
+
+            background:rgba(255,255,255,0.08);
+
+            animation:float 8s infinite ease-in-out;
+        }
+
+        .circle1{
+            width:200px;
+            height:200px;
+            top:-50px;
+            left:-50px;
+        }
+
+        .circle2{
+            width:250px;
+            height:250px;
+            bottom:-80px;
+            right:-80px;
+            animation-delay:2s;
+        }
+
+        @keyframes fadeIn{
+
+            from{
+                opacity:0;
+                transform:translateY(40px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        @keyframes float{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-20px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Background Animation -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+
+    <!-- Login Card -->
+
+    <div class="glass-card">
+
+        <h1 class="title">
+            FlowBoard
+        </h1>
+
+        <p class="subtitle">
+            Intelligent Project Dashboard for Team Collaboration
+        </p>
+
+        <div class="login-buttons">
+
+            <a href="/manager_login">
+                Manager Login
+            </a>
+
+            <a href="/leader_login">
+                Team Leader Login
+            </a>
+
+            <a href="/member_login">
+                Team Member Login
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

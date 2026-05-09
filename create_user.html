@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Users</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+
+            height:100vh;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            overflow:hidden;
+
+            background-image:
+            linear-gradient(
+                rgba(15,23,42,0.88),
+                rgba(15,23,42,0.95)
+            ),
+            url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070');
+
+            background-size:cover;
+
+            background-position:center;
+        }
+
+        /* Form Box */
+
+        .form-box{
+
+            width:460px;
+
+            padding:45px;
+
+            border-radius:25px;
+
+            background:rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(14px);
+
+            border:1px solid rgba(255,255,255,0.15);
+
+            box-shadow:0 8px 32px rgba(0,0,0,0.4);
+
+            animation:fadeIn 1.2s ease;
+        }
+
+        .form-box h1{
+
+            text-align:center;
+
+            color:white;
+
+            font-size:32px;
+
+            margin-bottom:35px;
+
+            font-weight:700;
+        }
+
+        form{
+
+            display:flex;
+
+            flex-direction:column;
+
+            gap:22px;
+        }
+
+        /* Inputs */
+
+        input,
+        select{
+
+            padding:16px;
+
+            border:none;
+
+            outline:none;
+
+            border-radius:14px;
+
+            background:rgba(255,255,255,0.1);
+
+            color:white;
+
+            font-size:15px;
+
+            border:1px solid rgba(255,255,255,0.12);
+
+            transition:0.3s;
+        }
+
+        input::placeholder{
+
+            color:#cbd5e1;
+        }
+
+        select{
+
+            cursor:pointer;
+        }
+
+        select option{
+
+            background:#1e293b;
+
+            color:white;
+        }
+
+        input:focus,
+        select:focus{
+
+            border:1px solid #60a5fa;
+
+            background:rgba(255,255,255,0.15);
+        }
+
+        /* Button */
+
+        button{
+
+            padding:16px;
+
+            border:none;
+
+            border-radius:14px;
+
+            background:linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            color:white;
+
+            font-size:17px;
+
+            font-weight:600;
+
+            cursor:pointer;
+
+            transition:0.4s;
+        }
+
+        button:hover{
+
+            transform:translateY(-4px);
+
+            box-shadow:0 8px 20px rgba(37,99,235,0.45);
+        }
+
+        /* Floating Background */
+
+        .circle{
+
+            position:absolute;
+
+            border-radius:50%;
+
+            background:rgba(255,255,255,0.05);
+
+            animation:float 8s infinite ease-in-out;
+        }
+
+        .circle1{
+            width:220px;
+            height:220px;
+            top:-70px;
+            left:-50px;
+        }
+
+        .circle2{
+            width:260px;
+            height:260px;
+            bottom:-100px;
+            right:-80px;
+            animation-delay:2s;
+        }
+
+        @keyframes fadeIn{
+
+            from{
+                opacity:0;
+                transform:translateY(40px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        @keyframes float{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-20px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+
+    <!-- Form Card -->
+
+    <div class="form-box">
+
+        <h1>Create Team Users</h1>
+
+        <form>
+
+            <input type="text"
+                   placeholder="Username"
+                   required>
+
+            <input type="password"
+                   placeholder="Password"
+                   required>
+
+            <select required>
+
+                <option disabled selected>
+                    Select Role
+                </option>
+
+                <option>
+                    Team Leader
+                </option>
+
+                <option>
+                    Team Member
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Create User
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
